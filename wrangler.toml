@@ -1,9 +1,10 @@
 name = "club-website"
-compatibility_date = "2024-03-19"
-main = "./out/index.js"
+compatibility_date = "2025-06-16"
+main = "src/index.js"
 
 [site]
-bucket = "./out"
+bucket = "./public"
+entry-point = "workers-site"
 
 [build]
 command = "npm run build"
