@@ -1,11 +1,12 @@
-import { GalleryEventPage } from "@/components/gallery-event-page"
+import { use } from "react";            // 🪄 helps unwrap promises
+import { GalleryEventPage } from "@/components/gallery-event-page";
 
-interface GalleryPageProps {
-  params: {
-    id: string
-  }
-}
+// ✅ v15‑compatible typing
+type GalleryPageProps = {
+  params: Promise<{ id: string }>;
+};
 
 export default function GalleryPage({ params }: GalleryPageProps) {
-  return <GalleryEventPage galleryId={params.id} />
+  const { id } = use(params);          // unwrap without making the component async
+  return <GalleryEventPage galleryId={id} />;
 }

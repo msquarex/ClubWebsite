@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState, useMemo } from "react"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 // Pre-defined particle positions to ensure consistency between server and client
 const PREDEFINED_PARTICLES = [
@@ -32,18 +32,11 @@ export function LoadingScreen() {
   const [loading, setLoading] = useState(true)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     setMounted(true)
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 1500)
-
-    return () => clearTimeout(timer)
   }, [])
 
-  // Show loading screen on route changes
   useEffect(() => {
     setLoading(true)
     const timer = setTimeout(() => {
@@ -51,12 +44,9 @@ export function LoadingScreen() {
     }, 1500)
 
     return () => clearTimeout(timer)
-  }, [pathname, searchParams])
+  }, [pathname])
 
-  // Only render particles on the client side
-  if (!mounted) {
-    return null
-  }
+  if (!mounted) return null
 
   return (
     <AnimatePresence>
