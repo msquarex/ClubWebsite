@@ -1,11 +1,9 @@
 name = "club-website"
 compatibility_date = "2025-06-16"
-main = "src/index.js"
+main = "workers/index.js"
 
 [site]
 bucket = "./public"
-entry-point = "workers-site"
 
 [build]
 command = "npm run build"
-upload.format = "directory" 
