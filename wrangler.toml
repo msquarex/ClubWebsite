@@ -1,4 +1,4 @@
-name = "club-website"
+name = "nexus"
 compatibility_date = "2025-06-16"
 main = "workers/index.js"
 
